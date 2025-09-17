@@ -1,12 +1,12 @@
 {
   "articles": [
     {
-      "id": 1,
       "title": "State in ReactJS",
       "image": "https://www.svgrepo.com/show/303500/react-1-logo.svg",
-      "date": "2024-03-04",
       "status": "Published",
-      "content": "This article explains the concept of State in ReactJS, how to declare it, and how to use it in components."
+      "date": "2025-09-17",
+      "content": "This article explains the concept of State in ReactJS, how to declare it, and how to use it in components.",
+      "id": 1
     },
     {
       "id": 2,
@@ -39,6 +39,14 @@
       "date": "2024-03-07",
       "status": "Unpublished",
       "content": "An introduction to basic React Hooks like useState and useEffect, and how to apply them in projects."
+    },
+    {
+      "title": "a",
+      "image": "https://marketplace.canva.com/EAGeUB3eNfw/1/0/1600w/canva-nhi%E1%BB%81u-m%C3%A0u-s%E1%BA%AFc-c%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-tr%E1%BA%BB-em-logo-zAryXCxAcKY.jpg",
+      "status": "Published",
+      "date": "2025-09-17",
+      "content": "content1",
+      "id": 6
     }
   ]
 }

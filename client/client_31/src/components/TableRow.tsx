@@ -10,6 +10,7 @@ type Prop = {
   blockArticle: (id: number, status: string) => void;
   deleteArticle: (id: number) => void;
   setArticles: React.Dispatch<React.SetStateAction<ArticleType[]>>;
+  articles: ArticleType[]
 };
 export const TableRow = ({
   article,
@@ -18,6 +19,7 @@ export const TableRow = ({
   deleteArticle,
   id,
   setArticles,
+  articles
 }: Prop) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -49,6 +51,11 @@ export const TableRow = ({
     color: "rgb(232, 76, 61)",
   };
   const fixArticle = async (article: Omit<ArticleType, "id">) => {
+    if (articles.some((a) => a.title === article.title && a.id !== id) ) {
+          Swal.fire("⚠️Ten bai viet khong duoc trung!");
+    
+          return;
+        }
     try {
       const res = await axios.put(
         `http://localhost:8080/articles/${id}`,

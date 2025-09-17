@@ -159,6 +159,7 @@ export const ListPost = () => {
                 deleteArticle={deleteArticle}
                 setArticles={setArticles}
                 id={a.id}
+                articles={articles}
               />
             ))
           )}
