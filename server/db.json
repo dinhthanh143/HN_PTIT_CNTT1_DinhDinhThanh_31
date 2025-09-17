@@ -1,0 +1,44 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "State in ReactJS",
+      "image": "https://www.svgrepo.com/show/303500/react-1-logo.svg",
+      "date": "2024-03-04",
+      "status": "Published",
+      "content": "This article explains the concept of State in ReactJS, how to declare it, and how to use it in components."
+    },
+    {
+      "id": 2,
+      "title": "Overview of ReactJS",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu0ffHrdMj3lnOBmCz6sLNcC2WKO7uk9l2oLR0pJMII099fQB4ZiAbRFtyQe51S3hPITo&usqp=CAU",
+      "date": "2024-03-03",
+      "status": "Unpublished",
+      "content": "An introduction to ReactJS, its history, key features, and why you should use it."
+    },
+    {
+      "title": "Props in ReactJS 2",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoPJDg62XA78phGOjZL6W-UsGFykJSB69SKvo7DzmDvhMO2cP0SVGWAvcCyqflD5SWOBg&usqp=CAU",
+      "status": "Published",
+      "date": "2025-09-17",
+      "content": "This article covers Props in ReactJS, explaining how to pass data between components.",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "Component Lifecycle in ReactJS",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoPJDg62XA78phGOjZL6W-UsGFykJSB69SKvo7DzmDvhMO2cP0SVGWAvcCyqflD5SWOBg&usqp=CAU",
+      "date": "2024-03-06",
+      "status": "Unpublished",
+      "content": "An analysis of the ReactJS component lifecycle and important methods such as componentDidMount and componentDidUpdate."
+    },
+    {
+      "id": 5,
+      "title": "Basic React Hooks",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmIjGKUWZfkYIj_n2urpxvPThI8pIPVFTzjCw-Y8hPRKb0RSdA2byF1LjZ2pHkrEqWcO4&usqp=CAU",
+      "date": "2024-03-07",
+      "status": "Unpublished",
+      "content": "An introduction to basic React Hooks like useState and useEffect, and how to apply them in projects."
+    }
+  ]
+}
