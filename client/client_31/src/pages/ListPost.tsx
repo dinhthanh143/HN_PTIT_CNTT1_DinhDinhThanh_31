@@ -43,7 +43,7 @@ export const ListPost = () => {
       console.log(error);
     }
   };
- const debouncedSearch = useCallback(
+  const debouncedSearch = useCallback(
     debounce((value: string) => {
       SearchArticle(value);
     }, 500), // 500ms sau khi ngừng gõ mới gọi API
@@ -78,9 +78,9 @@ export const ListPost = () => {
     }
   };
   //block
-  const blockArticle = (id: number) => {
+  const blockArticle = (id: number, status: string) => {
     Swal.fire({
-      title: "Bạn có chắc muốn chặn bài viết này?",
+      title: "Bạn có chắc muốn chặn/huỷ chặn bài viết này?",
       showDenyButton: true,
       confirmButtonText: "Xác nhận",
       denyButtonText: `Huỷ`,
@@ -88,12 +88,18 @@ export const ListPost = () => {
       if (result.isConfirmed) {
         axios
           .patch(`http://localhost:8080/articles/${id}`, {
-            status: "Unpublished",
+            status: status === "Published" ? "Unpublished" : "Published",
           })
           .then(() => {
             setArticles((prev) =>
               prev.map((a) =>
-                a.id === id ? { ...a, status: "Unpublished" } : a
+                a.id === id
+                  ? {
+                      ...a,
+                      status:
+                        status === "Published" ? "Unpublished" : "Published",
+                    }
+                  : a
               )
             );
             Swal.fire("Chặn thành công!", "", "success");

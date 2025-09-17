@@ -7,7 +7,7 @@ type Prop = {
   id: number;
   article: ArticleType;
   stt: number;
-  blockArticle: (id: number) => void;
+  blockArticle: (id: number, status: string) => void;
   deleteArticle: (id: number) => void;
   setArticles: React.Dispatch<React.SetStateAction<ArticleType[]>>;
 };
@@ -17,26 +17,36 @@ export const TableRow = ({
   blockArticle,
   deleteArticle,
   id,
-  setArticles
+  setArticles,
 }: Prop) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const publishedStyle: React.CSSProperties = {
-    border: "1px solid #4cb050",
+  const badgeBase: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: "120px", 
+    height: "32px", 
     borderRadius: "5px",
+    fontSize: "14px",
+    fontWeight: 500,
+  };
+
+  const publishedStyle: React.CSSProperties = {
+    ...badgeBase,
+    border: "1px solid #4cb050",
     backgroundColor: "rgb(246, 255, 240)",
     color: "#4cb050",
-    padding: "2px 13px",
   };
+
   const UnpublishedStyle: React.CSSProperties = {
+    ...badgeBase,
     border: "1px solid rgb(232, 76, 61)",
-    borderRadius: "5px",
     backgroundColor: "rgb(254, 230, 230)",
     color: "rgb(232, 76, 61)",
-    padding: "2px 5px",
   };
   const fixArticle = async (article: Omit<ArticleType, "id">) => {
     try {
@@ -45,9 +55,9 @@ export const TableRow = ({
         article
       );
       if (res.status === 200) {
-        setArticles(prev =>
-          prev.map(a  => a.id === id? {...a,... article } : a)
-        )
+        setArticles((prev) =>
+          prev.map((a) => (a.id === id ? { ...a, ...article } : a))
+        );
         Swal.fire("Sửa thành công!", "", "success");
       }
     } catch (error) {
@@ -71,24 +81,26 @@ export const TableRow = ({
           style={
             article.status === "Published" ? publishedStyle : UnpublishedStyle
           }>
-          {article.status === "Published" ? "Đã xuất bản" : "Chưa xuất bản"}
+          {article.status === "Published" ? "Đã xuất bản" : "Ngừng xuất bản"}
         </span>
       </td>
       <td className="border border-gray-300 px-4 py-2 flex justify-around border-b-0 h-[100%]">
         <div className="flex justify-center items-center space-x-2 border-0">
           <button
-            onClick={() => blockArticle(article.id)}
-            className="bg-yellow-400 hover:bg-yellow-500 text-white font-medium px-4 py-1 rounded border-0">
-            Chặn
+            onClick={() => blockArticle(article.id, article.status)}
+            className="w-18 h-10 bg-yellow-400 hover:bg-yellow-500 text-white font-medium rounded border-0">
+            {article.status === "Published" ? "Chặn" : "Bỏ chặn"}
           </button>
+
           <button
             onClick={showModal}
-            className="bg-orange-100 hover:bg-orange-200 text-orange-600 font-medium px-4 py-1 rounded  border-orange-200 border-0">
+            className="w-18 h-10 bg-orange-100 hover:bg-orange-200 text-orange-600 font-medium rounded border-0">
             Sửa
           </button>
+
           <button
             onClick={() => deleteArticle(article.id)}
-            className="bg-red-100 hover:bg-red-200 text-red-600 font-medium px-4 py-1 rounded  border-red-200 border-0">
+            className="w-18 h-10 bg-red-100 hover:bg-red-200 text-red-600 font-medium rounded border-0">
             Xóa
           </button>
         </div>
